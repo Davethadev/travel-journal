@@ -1,23 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
+import Journal from './Journal'
+import data from './data';
 
 function App() {
+  const journals = data.map((journal) => {
+    const {id, title, location, googleMapsUrl, startdate, endDate, description, imageUrl} = journal
+    return (
+      <Journal
+         key={id}
+         title={title}
+         location={location}
+         googleMapsUrl={googleMapsUrl}
+         startdate={startdate}
+         endDate={endDate}
+         description={description}
+         imageUrl={imageUrl}
+        // {...journal}
+      />
+    )
+  })
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className='heading'>
+        {/* <img src="" alt="" /> */}
+        <p>my travel journal.</p>
       </header>
+      {journals}
     </div>
   );
 }
